@@ -422,9 +422,9 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
             attributes[NSAttributedStringKey.foregroundColor] = unselectedColor
         }
         
-        if let highlightFont = hightlightFont {
-            attributes[NSAttributedStringKey.font] = highlightFont
-        }
+//         if let highlightFont = hightlightFont {
+//             attributes[NSAttributedStringKey.font] = highlightFont
+//         }
         
         if let configureLinkAttribute = configureLinkAttribute {
             attributes = configureLinkAttribute(type, attributes, isSelected)
