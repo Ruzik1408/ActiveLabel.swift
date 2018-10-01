@@ -430,7 +430,7 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
 //             attributes = configureLinkAttribute(type, attributes, isSelected)
 //         }
 
-        textStorage.addAttributes(attributes, range: selectedElement.range)
+ //       textStorage.addAttributes(attributes, range: selectedElement.range)
 
         setNeedsDisplay()
     }
