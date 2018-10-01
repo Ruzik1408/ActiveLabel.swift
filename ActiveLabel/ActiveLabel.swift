@@ -426,9 +426,9 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
 //             attributes[NSAttributedStringKey.font] = highlightFont
 //         }
         
-        if let configureLinkAttribute = configureLinkAttribute {
-            attributes = configureLinkAttribute(type, attributes, isSelected)
-        }
+//         if let configureLinkAttribute = configureLinkAttribute {
+//             attributes = configureLinkAttribute(type, attributes, isSelected)
+//         }
 
         textStorage.addAttributes(attributes, range: selectedElement.range)
 
