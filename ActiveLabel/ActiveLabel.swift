@@ -405,6 +405,7 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
             switch type {
             case .mention: selectedColor = mentionSelectedColor ?? mentionColor
             case .hashtag: selectedColor = hashtagSelectedColor ?? hashtagColor
+		           attributes[NSAttributedStringKey.font] = hashtagFont
             case .url: selectedColor = URLSelectedColor ?? URLColor
             case .custom:
                 let possibleSelectedColor = customSelectedColor[selectedElement.type] ?? customColor[selectedElement.type]
@@ -424,13 +425,13 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
             attributes[NSAttributedStringKey.foregroundColor] = unselectedColor
         }
         
-//         if let highlightFont = hightlightFont {
-//             attributes[NSAttributedStringKey.font] = highlightFont
-//         }
+        if let highlightFont = hightlightFont {
+            attributes[NSAttributedStringKey.font] = highlightFont
+        }
         
-//         if let configureLinkAttribute = configureLinkAttribute {
-//             attributes = configureLinkAttribute(type, attributes, isSelected)
-//         }
+        if let configureLinkAttribute = configureLinkAttribute {
+            attributes = configureLinkAttribute(type, attributes, isSelected)
+        }
 
        textStorage.addAttributes(attributes, range: selectedElement.range)
 
