@@ -416,21 +416,23 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
             switch type {
             case .mention: unselectedColor = mentionColor
             case .hashtag: unselectedColor = hashtagColor
+		           attributes[NSAttributedStringKey.font] = hashtagFont
+
             case .url: unselectedColor = URLColor
             case .custom: unselectedColor = customColor[selectedElement.type] ?? defaultCustomColor
             }
             attributes[NSAttributedStringKey.foregroundColor] = unselectedColor
         }
         
-//         if let highlightFont = hightlightFont {
-//             attributes[NSAttributedStringKey.font] = highlightFont
-//         }
+        if let highlightFont = hightlightFont {
+            attributes[NSAttributedStringKey.font] = highlightFont
+        }
         
-//         if let configureLinkAttribute = configureLinkAttribute {
-//             attributes = configureLinkAttribute(type, attributes, isSelected)
-//         }
+        if let configureLinkAttribute = configureLinkAttribute {
+            attributes = configureLinkAttribute(type, attributes, isSelected)
+        }
 
- //       textStorage.addAttributes(attributes, range: selectedElement.range)
+       textStorage.addAttributes(attributes, range: selectedElement.range)
 
         setNeedsDisplay()
     }
