@@ -45,6 +45,10 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
 	    @IBInspectable open var hashtagFont: UIFont? {
         didSet { updateTextStorage(parseText: false) }
     }
+	
+	   @IBInspectable open var customFont: UIFont? {
+        didSet { updateTextStorage(parseText: false) }
+    }
     @IBInspectable open var URLColor: UIColor = .blue {
         didSet { updateTextStorage(parseText: false) }
     }
@@ -327,6 +331,8 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
 		    attributes[NSAttributedStringKey.font] = hashtagFont
             case .url: attributes[NSAttributedStringKey.foregroundColor] = URLColor
             case .custom: attributes[NSAttributedStringKey.foregroundColor] = customColor[type] ?? defaultCustomColor
+		    		    attributes[NSAttributedStringKey.font] = customFont
+
             }
             
             if let highlightFont = hightlightFont {
@@ -409,6 +415,7 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
             case .url: selectedColor = URLSelectedColor ?? URLColor
             case .custom:
                 let possibleSelectedColor = customSelectedColor[selectedElement.type] ?? customColor[selectedElement.type]
+		    attributes[NSAttributedStringKey.font] = customFont
                 selectedColor = possibleSelectedColor ?? defaultCustomColor
             }
             attributes[NSAttributedStringKey.foregroundColor] = selectedColor
@@ -421,6 +428,8 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
 
             case .url: unselectedColor = URLColor
             case .custom: unselectedColor = customColor[selectedElement.type] ?? defaultCustomColor
+		    		           attributes[NSAttributedStringKey.font] = customFont
+
             }
             attributes[NSAttributedStringKey.foregroundColor] = unselectedColor
         }
